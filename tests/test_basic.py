@@ -72,6 +72,7 @@ class BasicTestSuite(unittest.TestCase):
         output = self._utils.get_date_before_n_days(to_date='06-07-2020', n_days=5)
         assert output == '01-07-2020'
 
+
 if __name__ == '__main__':
     unittest.main()
 

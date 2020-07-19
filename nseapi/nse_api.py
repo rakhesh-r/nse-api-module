@@ -3,8 +3,6 @@ from . import utils
 
 
 class NseApi:
-    _NSE_STOCK_DATA_INDEX_BASED: str
-    _NSE_EQUITY_MASTER: str
 
     def __init__(self):
         self._NSE_EQUITY_MASTER = "https://www.nseindia.com/api/equity-master"
