@@ -30,7 +30,7 @@ class BasicTestSuite(unittest.TestCase):
         output = self._nse_api.get_top_gainers_above_perc('NIFTY 50', 2.5)
         print(output)
         if len(output) > 0:
-            assert output[random.randint(0, len(output))]['pChange'] >= 2.5
+            assert output[random.randint(0, len(output) - 1)]['pChange'] >= 2.5
         else:
             assert True
 
@@ -39,7 +39,7 @@ class BasicTestSuite(unittest.TestCase):
         output = self._nse_api.get_top_losers_below_perc('NIFTY 50', -4.62)
         print(output)
         if len(output) > 0:
-            assert output[random.randint(0, len(output))]['pChange'] <= -4.62
+            assert output[random.randint(0, len(output) - 1)]['pChange'] <= -4.62
         else:
             assert True
 
