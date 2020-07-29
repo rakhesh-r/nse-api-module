@@ -55,7 +55,7 @@ class BasicTestSuite(unittest.TestCase):
         print("Test test_get_historical_day_data_days")
         output = self._nse_api.get_historical_day_data_days(symbol='TECHM', days_from_today=1)
         print(output)
-        assert len(output) == 1
+        assert len(output) == 1 or len(output) == 2
 
     def test_get_difference_dates(self):
         print("Test test_get_difference_dates")
@@ -71,6 +71,11 @@ class BasicTestSuite(unittest.TestCase):
         print("Test test_get_date_before_n_days")
         output = self._utils.get_date_before_n_days(to_date='06-07-2020', n_days=5)
         assert output == '01-07-2020'
+
+    def test_get_stock_info_by_symbol(self):
+        print("Test test_get_stock_info_by_symbol")
+        output = self._nse_api.get_stock_info_by_symbol('INFY')
+        assert output['info']['symbol'] == 'INFY'
 
 
 if __name__ == '__main__':

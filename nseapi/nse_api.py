@@ -17,6 +17,8 @@ class NseApi:
                                                                                                  'from': from_date,
                                                                                                  'to': to_date
                                                                                                  }
+        self._NSE_STOCK_INFO_BY_SYMBOL = "https://www.nseindia.com/api/quote-equity"
+        self._NSE_STOCK_INFO_BY_SYMBOL_PARAMS = lambda symbol: {'symbol': symbol}
 
     def get_top_n_gainers(self, index, top_n):
         dict_stocks = self._get_stocks_by_index(index)
@@ -78,3 +80,10 @@ class NseApi:
             raise Exception("Exception", r)
 
         return r.json()['data']
+
+    def get_stock_info_by_symbol(self, symbol):
+        r = http_client.get(self._NSE_STOCK_INFO_BY_SYMBOL, self._NSE_STOCK_INFO_BY_SYMBOL_PARAMS(symbol))
+        if not r.ok:
+            raise Exception("Failed to call " + self._NSE_STOCK_INFO_BY_SYMBOL)
+        dict_stocks = r.json()
+        return dict_stocks
